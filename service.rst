@@ -19,7 +19,26 @@ Converts a document to Answer Units.
 
             using (var fs = new FileStream("FILE_NAME", FileMode.Open))
             {
-                answers = await service.ConvertDocumentToAnswersAsync(fs, FileType.Pdf);
+                answers = await service.ConvertDocumentToAnswersAsync(fs, FileType.FILE_TYPE);
             }
         }
+		
+ConvertDocumentToHtmlAsync
+----------------
+
+Converts a document to HTML.
+
+::
+
+        public async Task ConvertDocumentToHtml()
+        {
+            var service = new DocumentConversionService("USERNAME", "PASSWORD");
+            string html;
+
+            using (var fs = new FileStream("FILE_NAME", FileMode.Open))
+            {
+                html = await service.ConvertDocumentToHtmlAsync(fs, FileType.FILE_TYPE);
+            }
+        }
+		
 		
