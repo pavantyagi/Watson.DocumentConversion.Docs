@@ -5,3 +5,21 @@ The Watson Document Conversion service_ converts a single HTML, PDF, or Microsof
 
 .. _service: https://www.nuget.org/packages/Watson.DocumentConversion/
 	
+ConvertDocumentToAnswersAsync
+----------------
+
+Converts a document to Answer Units.
+
+::
+
+        public async Task ConvertDocumentToAnswers()
+        {
+            var service = new DocumentConversionService("USERNAME", "PASSWORD");
+            IAnswers answers;
+
+            using (var fs = new FileStream("FILE_NAME", FileMode.Open))
+            {
+                answers = await service.ConvertDocumentToAnswersAsync(fs, FileType.Pdf);
+            }
+        }
+		
