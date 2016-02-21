@@ -1,12 +1,12 @@
-Watson.DocumentConversion
+Watson.PersonalityInsights
 =====================================
 
-Watson.DocumentConversion is a .NET implementation of IBM Watson Services Document Conversion.
+Watson.PersonalityInsights is a .NET implementation of IBM Watson Services Personality Insights.
 
 GitHub_ | NuGet_
 
-.. _GitHub: https://github.com/DamienDennehy/Watson.DocumentConversion
-.. _NuGet: https://www.nuget.org/packages/Watson.DocumentConversion
+.. _GitHub: https://github.com/DamienDennehy/Watson.PersonalityInsights
+.. _NuGet: https://www.nuget.org/packages/Watson.PersonalityInsights
 
 .. toctree::
    :maxdepth: 2
