@@ -48,7 +48,7 @@ Converts a document to Text.
 
 ::
 
-        public async Task ConvertDocumentToHtml()
+        public async Task ConvertDocumentToText()
         {
             var service = new DocumentConversionService("USERNAME", "PASSWORD");
             string text;
