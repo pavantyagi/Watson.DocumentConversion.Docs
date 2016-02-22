@@ -2,7 +2,7 @@ Advanced Options
 ==============
 
 It is possible to configure the output of a document conversion by using the advanced_ options of the Document Conversion service. 
-This is achieved by creating a JObject and passing it into the conversion method.
+This is achieved by creating a JObject_ and passing it into the conversion method.
 
 .. _JObject: http://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JObject.htm
 .. _advanced: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/document-conversion/customizing.shtml
