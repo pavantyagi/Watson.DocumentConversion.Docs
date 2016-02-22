@@ -1,7 +1,7 @@
 Advanced Options
 ==============
 
-It is possible to configure the output of a document conversion by using the advanced _options of the Document Conversion service. 
+It is possible to configure the output of a document conversion by using the _advanced options of the Document Conversion service. 
 This is achieved by creating a JObject and passing it into the conversion method.
 
 .. _JObject: http://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JObject.htm
@@ -25,6 +25,8 @@ The JObject can then be used in any standard method call.
         public async Task ConvertDocumentToText()
         {
             var service = new DocumentConversionService("USERNAME", "PASSWORD");
+			var config = JObject.Parse("{\"normalize_html\":{\"exclude_tags_completely\":[\"script\"]}}");
+			
             string text;
 
             using (var fs = new FileStream("FILE_NAME", FileMode.Open))
