@@ -1,105 +1,62 @@
-Personality Insights
+Document Conversion
 ==============
 
-The Watson Personality Insights service_ uses linguistic analytics to extract a spectrum of cognitive and social characteristics from the text data that a person generates through blogs, tweets, forum posts, and more.
+The Watson Document Conversion service_ converts a single HTML, PDF, or Microsoft Word document into a normalized HTML, plain text, or a set of JSON-formatted Answer units that can be used with other Watson services.
 
-.. _service: https://www.nuget.org/packages/Watson.PersonalityInsights/
+.. _service: https://www.nuget.org/packages/Watson.DocumentConversion/
 	
-GetProfileAsync
-----------------
+ConvertDocumentToAnswersAsync
+------------------------------
 
-Gets a PersonalityProfile based on the string content to analyze.
-
-::
-
-        public async Task GetProfile()
-        {
-            var service = new PersonalityInsightsService("USERNAME", "PASSWORD");
-            var profile = await service.GetProfileAsync("SAMPLE_CONTENT");
-        }
-		
-You may also use ProfileOptions to configure additional options.
+Converts a document to Answer Units.
 
 ::
 
-        public async Task GetProfileWithOptions()
+        public async Task ConvertDocumentToAnswers()
         {
-            var options = new ProfileOptions("SAMPLE_CONTENT")
+            var service = new DocumentConversionService("USERNAME", "PASSWORD");
+            IAnswers answers;
+
+            using (var fs = new FileStream("FILE_NAME", FileMode.Open))
             {
-                IncludeRaw = true,
-                AcceptLanguage = AcceptLanguage.En
-            };
-            var service = new PersonalityInsightsService("USERNAME", "PASSWORD");
-            var profile = await service.GetProfileAsync(options);
+                answers = await service.ConvertDocumentToAnswersAsync(fs, FileType.FILE_TYPE);
+            }
         }
 		
-You may also pass in multiple items using the Content class.
+ConvertDocumentToHtmlAsync
+---------------------------
+
+Converts a document to HTML.
 
 ::
 
-        public async Task GetProfileWithMultipleItems()
+        public async Task ConvertDocumentToHtml()
         {
-            var content1 = "SAMPLE_CONTENT1";
-            var content2 = "SAMPLE_CONTENT2";
+            var service = new DocumentConversionService("USERNAME", "PASSWORD");
+            string html;
 
-            var contentItems = new List<ContentItem>
+            using (var fs = new FileStream("FILE_NAME", FileMode.Open))
             {
-                new ContentItem(content1),
-                new ContentItem(content2)
-            };
-
-            var content = new Content(contentItems);
-            var options = new ProfileOptions(content);
-            var service = new PersonalityInsightsService("USERNAME", "PASSWORD");
-            var profile = await service.GetProfileAsync(options);
+                html = await service.ConvertDocumentToHtmlAsync(fs, FileType.FILE_TYPE);
+            }
         }
 		
-GetProfileAsCsvAsync
-----------------
+ConvertDocumentToTextAsync
+---------------------------
 
-Gets a PersonalityProfile in Csv format based on multiple content items to analyze.
+Converts a document to Text.
 
 ::
 
-        public async Task GetProfileAsCsv()
+        public async Task ConvertDocumentToHtml()
         {
-            var service = new PersonalityInsightsService("USERNAME", "PASSWORD");
-            var profile = await service.GetProfileAsCsvAsync("SAMPLE_CONTENT");
-        }
-		
-You may also use ProfileOptions to configure additional options.
+            var service = new DocumentConversionService("USERNAME", "PASSWORD");
+            string text;
 
-::
-
-        public async Task GetProfileAsCsvWithOptions()
-        {
-            var options = new ProfileOptions("SAMPLE_CONTENT")
+            using (var fs = new FileStream("FILE_NAME", FileMode.Open))
             {
-                IncludeRaw = true,
-                IncludeCsvHeaders = true,
-                AcceptLanguage = AcceptLanguage.En
-            };
-            var service = new PersonalityInsightsService("USERNAME", "PASSWORD");
-            var profile = await service.GetProfileAsCsvAsync(options);
+                text = await service.ConvertDocumentToTextAsync(fs, FileType.FILE_TYPE);
+            }
         }
 		
-You may also pass in multiple items using the Content class.
-
-::
-
-        public async Task GetProfileAsCsvWithMultipleItems()
-        {
-            var content1 = "SAMPLE_CONTENT1";
-            var content2 = "SAMPLE_CONTENT2";
-
-            var contentItems = new List<ContentItem>
-            {
-                new ContentItem(content1),
-                new ContentItem(content2)
-            };
-
-            var content = new Content(contentItems);
-            var options = new ProfileOptions(content);
-            var service = new PersonalityInsightsService("USERNAME", "PASSWORD");
-            var profile = await service.GetProfileAsCsvAsync(options);
-        }
+		
